@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <Spinner
+        android:id="@+id/report_period_sp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        />
+    <ListView android:id="@+id/report_reports_lv" 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:layout_weight="1" 
+        android:drawSelectorOnTop="false"
+        />
+        
+    <TextView android:id="@+id/report_total_tv" 
+        android:background="#696969"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:gravity="center_horizontal"
+        />
+
+    <LinearLayout 
+        android:orientation="horizontal"
+        android:layout_width="fill_parent" 
+        android:layout_height="wrap_content">
+        
+        <Button android:id="@+id/report_t0cat_btn" 
+            android:layout_width="0dip" 
+            android:layout_height="wrap_content"
+            android:layout_weight="1" 
+            android:text="@string/report_t0cat_btn" 
+            />
+        <Button android:id="@+id/report_t1cat_btn" 
+            android:layout_width="0dip" 
+            android:layout_height="wrap_content"
+            android:layout_weight="1" 
+            android:text="@string/report_t1cat_btn" 
+            />
+        <Button android:id="@+id/report_month_btn" 
+            android:layout_width="0dip" 
+            android:layout_height="wrap_content"
+            android:layout_weight="1" 
+            android:text="@string/report_month_btn" 
+            />
+    </LinearLayout>
+
+</LinearLayout>

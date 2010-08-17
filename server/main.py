@@ -12,12 +12,6 @@ class User(db.Model):
   session_key = db.StringProperty()
   last_login = db.DateTimeProperty(auto_now=True)
   
-class TallyType(db.Model):
-  type_id = db.IntegerProperty()
-  sub_type_id = db.IntegerProperty()
-  name = db.StringProperty()
-  description = db.StringProperty()
-
 class Tally(db.Model):
   type_id = db.IntegerProperty()
   sub_type_id = db.IntegerProperty()
@@ -68,40 +62,6 @@ def user_login(user_id, password):
                                    + str(datetime.datetime.today())).hexdigest()
     user.put()
     return user.session_key
-  
-def get_tally_types(session_key):
-  if is_user_auth(session_key):
-    query = db.Query(TallyType)
-    items = query.all()
-    results = []
-    for item in items:
-      results.append((item.type_id, item.sub_type_id, item.name, item.description))
-    return results
-  
-def add_tally_type(session_key, type_id, sub_type_id, name, desc):
-  if is_user_auth(session_key):
-    item = TallyType()
-    item.type_id = type_id
-    item.sub_type_id = sub_type_id
-    item.name = name
-    item.description = desc
-    item.put()
-  
-def save_tally_type(session_key, type_id, sub_type_id, name, desc):
-  if is_user_auth(session_key):
-    item = TallyType()
-    item.type_id = type_id
-    item.sub_type_id = sub_type_id
-    item.name = name
-    item.description = desc
-    item.put()
-  
-def del_tally_type(session_key, type_id, sub_type_id):
-  if is_user_auth(session_key):
-    query = db.Query(TallyType)
-    item = query.filter('type_id =', type_id).filter('sub_type_id =', sub_type_id).get()
-    if item <> None:
-      item.delete()
   
 def get_last_tallies(session_key, count, offset):
   if is_user_auth(session_key):
@@ -242,19 +202,32 @@ def get_stat_report(session_key, start_month, end_month, user_id):
 
     return stat_report
 
+def get_month_total(session_key, month):
+  if is_user_auth(session_key):
+    query = db.Query(MonthTally)
+    query.filter('month_str =', month)
+    results = query.fetch(1000)
+
+    t0_total = 0
+    t1_total = 0
+    for item in results:
+      if item.type_id == 0:
+        t0_total += item.count
+      if item.type_id == 1:
+        t1_total += item.count
+
+    return [t0_total, t1_total]
+
 #-------------------------------------------------
 handler = CGIXMLRPCRequestHandler()
 handler.register_introspection_functions()
 handler.register_function(user_login)
-handler.register_function(get_tally_types)
-handler.register_function(add_tally_type)
-handler.register_function(save_tally_type)
-handler.register_function(del_tally_type)
 handler.register_function(get_last_tallies)
 handler.register_function(get_tallies)
 handler.register_function(add_tally)
 handler.register_function(save_tally)
 handler.register_function(del_tally)
 handler.register_function(get_stat_report)
+handler.register_function(get_month_total)
 handler.handle_request()
 
