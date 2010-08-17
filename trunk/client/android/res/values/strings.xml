@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ezTally轻松家庭记账</string>
+
+    <string name="tally_activity_title">ezTally-收支项详情</string>
+    <string name="tally_amount_tv">金额：</string>
+    <string name="tally_amount_hint">整数金额(元), 必填</string>
+	<string name="tally_date_tv">日期：</string>
+    <string name="tally_date_hint">点击选择</string>
+	<string name="tally_type_tv">类目：</string>
+	<string name="tally_t0_rb">收入</string>
+	<string name="tally_t1_rb">支出</string>
+	<string name="tally_user_tv">用户：</string>
+	<string name="tally_memo_tv">备注：</string>
+	<string name="tally_save_btn">保存</string>
+	<string name="tally_delete_btn">删除</string>
+    <string name="tally_save_progress">正在保存收支项...</string>
+    <string name="tally_delete_progress">正在删除收支项...</string>
+    <string name="tally_save_failed">很抱歉，保存收支项操作失败！</string>
+    <string name="tally_delete_failed">很抱歉，删除收支项操作失败！</string>
+
+    <string name="login_activity_title">ezTally-登录</string>
+    <string name="login_svcurl_tv">当前服务：</string>
+    <string name="login_user_tv">用户：</string>
+    <string name="login_password_tv">密码：</string>
+	<string name="login_rememberme_cb">记住并在下次自动登录</string>
+    <string name="login_login_btn">登录</string>
+    <string name="login_setting_btn">设置</string>
+    <string name="login_login_progress">正在登录远程服务...</string>
+    <string name="login_login_failed">登录失败，密码错误或连接服务失败！</string>
+    <string name="login_user_prompt">选择用户</string>
+
+    <string name="tallies_menu_login">登录</string>
+    <string name="tallies_menu_setting">设置</string>
+    <string name="tallies_menu_about">关于...</string>
+    <string name="tallies_menu_quit">退出</string>
+    <string name="tallies_getdata_progress">正在获取收支项数据...</string>
+    <string name="tallies_getdata_failed">正在获取收支项数据...</string>
+    <string name="tallies_montotal_tv">本月合计 [收入%s元, 支出%s元]</string>
+    <string name="tallies_add_btn">添加收支项</string>
+    <string name="tallies_report_btn">查看收支报告</string>
+    <string name="tallies_about_title">关于ezTally</string>
+    <string name="tallies_about_message">简单易用的家庭网络记账软件，远端服务基于GAE(Google Application Engine)，有Android和PC两种客户端。当前版本: 0.5。</string>
+
+    <string name="report_activity_title">ezTally-收支报告</string>
+    <string name="report_chart_activity_title">ezTally-收支统计图</string>
+    <string name="report_query_progress">正在获取报告数据...</string>
+    <string name="report_query_failed">很抱歉，获取报告数据失败！</string>
+    <string name="report_t0cat_tv">收入分类统计(类目,金额,百分比)</string>
+    <string name="report_t1cat_tv">支出分类统计(类目,金额,百分比)</string>
+    <string name="report_month_tv">月度收支统计(月份,收入,支出,结余)</string>
+    <string name="report_total_tv">合计：收入%s元,支出%s元,结余%s元</string>
+    <string name="report_t0cat_btn">收入饼图</string>
+    <string name="report_t1cat_btn">支出饼图</string>
+    <string name="report_month_btn">月柱状图</string>
+    <string name="report_t0cat_chart_title">收入分类统计图</string>
+    <string name="report_t1cat_chart_title">支出分类统计图</string>
+    <string name="report_month_chart_title">月度收支统计图</string>
+    <string name="report_month_chart_x">月份</string>
+    <string name="report_month_chart_y">金额(元)</string>
+    <string name="report_month_chart_t0">收入</string>
+    <string name="report_month_chart_t1">支出</string>
+    <string name="report_month_chart_balance">结余</string>
+    <string name="report_t0cat_chart_t0">收入</string>
+    <string name="report_t1cat_chart_t1">支出</string>
+
+    <string name="setting_activity_title">ezTally-设置</string>
+    <string name="setting_service_url_title">远程服务地址</string>
+    <string name="setting_service_url_summary">设置远程服务的URL地址，如http://eztally.appspot.com</string>
+
+    <string name="rpc_call_err">很抱歉，远程服务调用出错！</string>
+    <string name="rpc_connect_err">很抱歉，无法连接到远程服务！</string>
+
+	<string-array name="t0_subtypes_arr">
+		<item>未分类</item>
+		<item>薪资福利</item>
+		<item>兼职外快</item>
+		<item>投资收益</item>
+		<item>人情礼金</item>
+	</string-array>
+
+	<string-array name="t1_subtypes_arr">
+		<item>未分类</item>
+		<item>餐饮食品</item>
+		<item>公共服务</item>
+		<item>家居日用</item>
+		<item>汽车交通</item>
+		<item>服饰化妆</item>
+		<item>文化教育</item>
+		<item>休闲娱乐</item>
+		<item>房屋物业</item>
+		<item>储蓄投资</item>
+		<item>医疗保健</item>
+		<item>人情交际</item>
+	</string-array>
+
+    <string-array name="users_arr">
+        <item>男主人</item>
+        <item>女主人</item>
+    </string-array>
+
+    <string-array name="report_period_arr">
+        <item>本月收支报告</item>
+        <item>今年收支报告</item>
+        <item>上月收支报告</item>
+        <item>去年收支报告</item>
+    </string-array>
+</resources>
