@@ -15,6 +15,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,6 +34,8 @@ import android.graphics.Bitmap;
 import com.google.eztally.android.R;
 
 public class TalliesActivity extends Activity {
+	private static final String TAG = "TalliesActivity";
+
 	private static final int  DIALOG_ABOUT_KEY = 100;
 	private static final int  DIALOG_LOGIN_PROGRESS_KEY = 201;
 	private static final int  DIALOG_TALLIES_PROGRESS_KEY = 202;
@@ -55,7 +58,7 @@ public class TalliesActivity extends Activity {
 	private XMLRPCClient client;
 	private TalliesAdapter tallies;
 	private boolean isFirstTally = false;
-	private boolean isReqTallies = false;
+	//private boolean isReqTallies = false;
 	private String totalStr;
 	
     @Override
@@ -137,7 +140,11 @@ public class TalliesActivity extends Activity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		switch (requestCode) {
-			case LoginActivity.LOGIN_ACTION_LOGIN: {
+			case LoginActivity.LOGIN_ACTION_LOGIN: 
+			case LoginActivity.LOGIN_ACTION_RELOGIN: {
+		        if (client.getUrl().compareToIgnoreCase(RpcMethod.serviceUrl) != 0) {
+			    	client = new XMLRPCClient(RpcMethod.serviceUrl);
+		        }
 				switch (resultCode) {
 					case RESULT_OK: {
 						reqLastTallies(COUNT_FIRST_TIME, 0);
@@ -168,7 +175,7 @@ public class TalliesActivity extends Activity {
 			}
 			case SettingActivity.SETTING_ACTION_SET: {
 		        String svcUrl = setting.getString(SettingActivity.KEY_SERVICE_URL, SettingActivity.DEFAULT_SVC_URL);
-		        if ((RpcMethod.sessionKey == null) || (svcUrl.compareToIgnoreCase(RpcMethod.serviceUrl) != 0)) {
+		        if (svcUrl.compareToIgnoreCase(RpcMethod.serviceUrl) != 0) {
 			    	client = new XMLRPCClient(svcUrl);
 		        	loginWithReqTallies();
 		        }
@@ -228,7 +235,7 @@ public class TalliesActivity extends Activity {
 						RpcMethod.sessionKey = (String) result;
 						reqLastTallies(COUNT_FIRST_TIME, 0);
 					} else {
-						//showDialog(DIALOG_LOGIN_FAILED_KEY);
+						Log.e(TAG, "RpcError[user_login]: " + resInfo);
 						startLoginForResult(LoginActivity.LOGIN_ACTION_RELOGIN);
 					}
 				}
@@ -244,40 +251,35 @@ public class TalliesActivity extends Activity {
 	}
 
     private void reqLastTallies(final int count, final int offset){
-		if ((RpcMethod.sessionKey == null) ||(isReqTallies)) {
-			String info1 = (RpcMethod.sessionKey == null) ? "NULL" : RpcMethod.sessionKey;
-			String info2 = isReqTallies ? "DOING" : "";
-			tvInfo.setText(info2 + "**" + info1);
-			return;
-		}
+		if (RpcMethod.sessionKey == null) return;
 
-		showDialog(DIALOG_TALLIES_PROGRESS_KEY);
 		if (offset == 0) {
 			tallies.clear();
 			isFirstTally = false;
+			//reqMonTotal();
 		}
-
+		showDialog(DIALOG_TALLIES_PROGRESS_KEY);
 		RpcMethod rpc = new RpcMethod(client, "get_last_tallies", new RpcMethod.Callback() {
 			public void callRes(Object result, int resCode, String resInfo) {
 				if (offset == 0) reqMonTotal();
 				dismissDialog(DIALOG_TALLIES_PROGRESS_KEY);
 				if ((result != null) && (resCode == 0)){
 					Object[] temp = (Object[]) result;
-					for (int i=0;i<temp.length;i++){
+					for (int i = 0; i < temp.length; i++){
 						tallies.add(temp[i]);
 					}
 					if (temp.length == 0) isFirstTally = true;
 					tvInfo.setText(String.valueOf(temp.length));
-				}else{
-					tvInfo.setText("RpcError[" + String.valueOf(resCode) + "]: " + resInfo);
+				} else {
+					String errMsg = "RpcError[get_last_tallies]: " + resInfo;
+					Log.e(TAG, errMsg);
+					tvInfo.setText(errMsg);
 					showDialog(DIALOG_TALLIES_FAILED_KEY);
 				}
-				isReqTallies = false;
 			}
 		});
 		
 		Object[] params = { RpcMethod.sessionKey, count, offset, };
-		isReqTallies = true;
 		rpc.callReq(params);
     }
 
@@ -292,7 +294,9 @@ public class TalliesActivity extends Activity {
 					int t1Total = Integer.parseInt(values[1].toString());
 					tvMonTotal.setText(String.format(totalStr, t0Total, t1Total));
 				}else{
-					tvInfo.setText("RpcError[" + String.valueOf(resCode) + "]: " + resInfo);
+					String errMsg = "RpcError[get_month_total]: " + resInfo;
+					Log.e(TAG, errMsg);
+					tvInfo.setText(errMsg);
 				}
 			}
 		});

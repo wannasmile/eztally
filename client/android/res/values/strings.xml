@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ezTally轻松家庭记账</string>
+    <string name="app_name">ezTally</string>
 
     <string name="tally_activity_title">ezTally-收支项详情</string>
     <string name="tally_amount_tv">金额：</string>
@@ -30,17 +30,18 @@
     <string name="login_login_failed">登录失败，密码错误或连接服务失败！</string>
     <string name="login_user_prompt">选择用户</string>
 
+    <string name="tallies_activity_title">ezTally轻松家庭记账</string>
     <string name="tallies_menu_login">登录</string>
     <string name="tallies_menu_setting">设置</string>
     <string name="tallies_menu_about">关于...</string>
     <string name="tallies_menu_quit">退出</string>
     <string name="tallies_getdata_progress">正在获取收支项数据...</string>
-    <string name="tallies_getdata_failed">正在获取收支项数据...</string>
+    <string name="tallies_getdata_failed">很抱歉，获取收支项数据失败！</string>
     <string name="tallies_montotal_tv">本月合计 [收入%s元, 支出%s元]</string>
     <string name="tallies_add_btn">添加收支项</string>
     <string name="tallies_report_btn">查看收支报告</string>
     <string name="tallies_about_title">关于ezTally</string>
-    <string name="tallies_about_message">简单易用的家庭网络记账软件，远端服务基于GAE(Google Application Engine)，有Android和PC两种客户端。当前版本: 0.5。</string>
+    <string name="tallies_about_message">简易的家庭网络记账软件，后台服务基于GAE(Google Application Engine)，有Android和PC两种客户端。当前版本: v0.5.1。</string>
 
     <string name="report_activity_title">ezTally-收支报告</string>
     <string name="report_chart_activity_title">ezTally-收支统计图</string>

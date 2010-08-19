@@ -15,6 +15,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -26,6 +27,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class TallyActivity extends Activity {
+	private static final String TAG = "TallyActivity";
+
 	public static final String TALLY_ACTION_KEY = "TALLY_ACTION";
 	public static final int  TALLY_ACTION_ADD = 201;
 	public static final int  TALLY_ACTION_EDIT = 202;
@@ -236,7 +239,9 @@ public class TallyActivity extends Activity {
 					setResult(RESULT_OK);
 					finish();
 				} else {
-					tvInfo.setText("RpcError[" + String.valueOf(resCode)	+ "]: " + resInfo);
+					String errMsg = "RpcError[add_tally]: " + resInfo;
+					Log.e(TAG, errMsg);
+					tvInfo.setText(errMsg);
 					showDialog(DIALOG_SAVE_FAILED_KEY);
 				}
 			}
@@ -265,7 +270,9 @@ public class TallyActivity extends Activity {
 					setResult(RESULT_OK);
 					finish();
 				} else {
-					tvInfo.setText("RpcError[" + String.valueOf(resCode)	+ "]: " + resInfo);
+					String errMsg = "RpcError[save_tally]: " + resInfo;
+					Log.e(TAG, errMsg);
+					tvInfo.setText(errMsg);
 					showDialog(DIALOG_SAVE_FAILED_KEY);
 				}
 			}
@@ -295,7 +302,9 @@ public class TallyActivity extends Activity {
 					setResult(RESULT_OK);
 					finish();
 				} else {
-					tvInfo.setText("RpcError[" + String.valueOf(resCode)	+ "]: " + resInfo);
+					String errMsg = "RpcError[del_tally]: " + resInfo;
+					Log.e(TAG, errMsg);
+					tvInfo.setText(errMsg);
 					showDialog(DIALOG_DELETE_FAILED_KEY);
 				}
 			}

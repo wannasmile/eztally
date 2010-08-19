@@ -32,6 +32,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class ReportActivity extends Activity {
+	private static final String TAG = "ReportActivity";
+
 	public static final int  REPORT_ACTION_REPORT = 401;
 
 	private static final int  DIALOG_REPORT_PROGRESS_KEY = 1;
@@ -353,7 +356,9 @@ public class ReportActivity extends Activity {
 					balance = t0Amount - t1Amount;
 					tvTotal.setText(String.format(totalStr, t0Amount, t1Amount, balance));
 				} else {
-					//tvTotal.setText("RpcError[" + String.valueOf(resCode) + "]: " + resInfo);
+					String errMsg = "RpcError[get_stat_report]: " + resInfo;
+					Log.e(TAG, errMsg);
+					//tvTotal.setText("RpcError[get_stat_report]: " + resInfo);
 					showDialog(DIALOG_QUERY_FAILED_KEY);
 				}
 			}
