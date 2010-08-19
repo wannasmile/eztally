@@ -6,7 +6,6 @@
     <string name="tally_amount_tv">金额：</string>
     <string name="tally_amount_hint">整数金额(元), 必填</string>
 	<string name="tally_date_tv">日期：</string>
-    <string name="tally_date_hint">点击选择</string>
 	<string name="tally_type_tv">类目：</string>
 	<string name="tally_t0_rb">收入</string>
 	<string name="tally_t1_rb">支出</string>
@@ -68,9 +67,6 @@
     <string name="setting_activity_title">ezTally-设置</string>
     <string name="setting_service_url_title">远程服务地址</string>
     <string name="setting_service_url_summary">设置远程服务的URL地址，如http://eztally.appspot.com</string>
-
-    <string name="rpc_call_err">很抱歉，远程服务调用出错！</string>
-    <string name="rpc_connect_err">很抱歉，无法连接到远程服务！</string>
 
 	<string-array name="t0_subtypes_arr">
 		<item>未分类</item>

@@ -73,16 +73,16 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f050000;
-        public static final int login_activity_title=0x7f050011;
-        public static final int login_login_btn=0x7f050016;
-        public static final int login_login_failed=0x7f050019;
-        public static final int login_login_progress=0x7f050018;
-        public static final int login_password_tv=0x7f050014;
-        public static final int login_rememberme_cb=0x7f050015;
-        public static final int login_setting_btn=0x7f050017;
-        public static final int login_svcurl_tv=0x7f050012;
-        public static final int login_user_prompt=0x7f05001a;
-        public static final int login_user_tv=0x7f050013;
+        public static final int login_activity_title=0x7f050010;
+        public static final int login_login_btn=0x7f050015;
+        public static final int login_login_failed=0x7f050018;
+        public static final int login_login_progress=0x7f050017;
+        public static final int login_password_tv=0x7f050013;
+        public static final int login_rememberme_cb=0x7f050014;
+        public static final int login_setting_btn=0x7f050016;
+        public static final int login_svcurl_tv=0x7f050011;
+        public static final int login_user_prompt=0x7f050019;
+        public static final int login_user_tv=0x7f050012;
         public static final int report_activity_title=0x7f050026;
         public static final int report_chart_activity_title=0x7f050027;
         public static final int report_month_btn=0x7f050030;
@@ -104,13 +104,12 @@ public final class R {
         public static final int report_t1cat_chart_title=0x7f050032;
         public static final int report_t1cat_tv=0x7f05002b;
         public static final int report_total_tv=0x7f05002d;
-        public static final int rpc_call_err=0x7f05003e;
-        public static final int rpc_connect_err=0x7f05003f;
         public static final int setting_activity_title=0x7f05003b;
         public static final int setting_service_url_summary=0x7f05003d;
         public static final int setting_service_url_title=0x7f05003c;
         public static final int tallies_about_message=0x7f050025;
         public static final int tallies_about_title=0x7f050024;
+        public static final int tallies_activity_title=0x7f05001a;
         public static final int tallies_add_btn=0x7f050022;
         public static final int tallies_getdata_failed=0x7f050020;
         public static final int tallies_getdata_progress=0x7f05001f;
@@ -123,19 +122,18 @@ public final class R {
         public static final int tally_activity_title=0x7f050001;
         public static final int tally_amount_hint=0x7f050003;
         public static final int tally_amount_tv=0x7f050002;
-        public static final int tally_date_hint=0x7f050005;
         public static final int tally_date_tv=0x7f050004;
-        public static final int tally_delete_btn=0x7f05000c;
-        public static final int tally_delete_failed=0x7f050010;
-        public static final int tally_delete_progress=0x7f05000e;
-        public static final int tally_memo_tv=0x7f05000a;
-        public static final int tally_save_btn=0x7f05000b;
-        public static final int tally_save_failed=0x7f05000f;
-        public static final int tally_save_progress=0x7f05000d;
-        public static final int tally_t0_rb=0x7f050007;
-        public static final int tally_t1_rb=0x7f050008;
-        public static final int tally_type_tv=0x7f050006;
-        public static final int tally_user_tv=0x7f050009;
+        public static final int tally_delete_btn=0x7f05000b;
+        public static final int tally_delete_failed=0x7f05000f;
+        public static final int tally_delete_progress=0x7f05000d;
+        public static final int tally_memo_tv=0x7f050009;
+        public static final int tally_save_btn=0x7f05000a;
+        public static final int tally_save_failed=0x7f05000e;
+        public static final int tally_save_progress=0x7f05000c;
+        public static final int tally_t0_rb=0x7f050006;
+        public static final int tally_t1_rb=0x7f050007;
+        public static final int tally_type_tv=0x7f050005;
+        public static final int tally_user_tv=0x7f050008;
     }
     public static final class xml {
         public static final int setting=0x7f040000;
