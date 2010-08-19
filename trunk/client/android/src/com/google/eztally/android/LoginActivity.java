@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -20,6 +21,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class LoginActivity extends Activity {
+	private static final String TAG = "LoginActivity";
+
 	public static final String LOGIN_ACTION_KEY = "LOGIN_ACTION";
 	public static final int  LOGIN_ACTION_LOGIN = 101;
 	public static final int  LOGIN_ACTION_RELOGIN = 102;
@@ -162,7 +165,9 @@ public class LoginActivity extends Activity {
 					setResult(RESULT_OK);
 					finish();
 				} else {
-					//tvInfo.setText("RpcError[" + String.valueOf(resCode)	+ "]: " + resInfo);
+					String errMsg = "RpcError[user_login]: " + resInfo;
+					Log.e(TAG, errMsg);
+					//tvInfo.setText(errMsg);
 					tvInfo.setText(R.string.login_login_failed);
 					tvInfo.setVisibility(View.VISIBLE);
 				}
@@ -177,8 +182,7 @@ public class LoginActivity extends Activity {
 	}
 
     private void startSettingForResult() {
-		Intent intent = new Intent();
-		intent.setClass(this, SettingActivity.class);
+		Intent intent = new Intent(this, SettingActivity.class);
 		startActivityForResult(intent, SettingActivity.SETTING_ACTION_SET);
     }
 
