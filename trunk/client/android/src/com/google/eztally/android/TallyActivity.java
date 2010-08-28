@@ -249,7 +249,10 @@ public class TallyActivity extends Activity {
 		
 		int typeId = (rgType.getCheckedRadioButtonId() == R.id.tally_t0_rb) ? 0 : 1;
 		int subTypeId = (typeId == 0) ? spT0SubType.getSelectedItemPosition() : spT1SubType.getSelectedItemPosition();
-		int amount = Integer.parseInt( etAmount.getText().toString());
+		int amount = 0;
+		if (etAmount.getText().length() > 0) {
+			amount = Integer.parseInt( etAmount.getText().toString());
+		}
 		int userId = spUser.getSelectedItemPosition();
 		String dateStr = etDate.getText().toString();
 		String memo = etMemo.getText().toString();
@@ -281,7 +284,10 @@ public class TallyActivity extends Activity {
 		int id = bundle.getInt(TALLY_ID_KEY);
 		int typeId = (rgType.getCheckedRadioButtonId() == R.id.tally_t0_rb) ? 0 : 1;
 		int subTypeId = (typeId == 0) ? spT0SubType.getSelectedItemPosition() : spT1SubType.getSelectedItemPosition();
-		int amount = Integer.parseInt( etAmount.getText().toString());
+		int amount = 0;
+		if (etAmount.getText().length() > 0) {
+			amount = Integer.parseInt( etAmount.getText().toString());
+		}
 		int userId = spUser.getSelectedItemPosition();
 		String dateStr = etDate.getText().toString();
 		String memo = etMemo.getText().toString();

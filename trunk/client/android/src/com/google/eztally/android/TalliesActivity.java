@@ -58,7 +58,6 @@ public class TalliesActivity extends Activity {
 	private XMLRPCClient client;
 	private TalliesAdapter tallies;
 	private boolean isFirstTally = false;
-	//private boolean isReqTallies = false;
 	private String totalStr;
 	
     @Override
@@ -256,7 +255,6 @@ public class TalliesActivity extends Activity {
 		if (offset == 0) {
 			tallies.clear();
 			isFirstTally = false;
-			//reqMonTotal();
 		}
 		showDialog(DIALOG_TALLIES_PROGRESS_KEY);
 		RpcMethod rpc = new RpcMethod(client, "get_last_tallies", new RpcMethod.Callback() {
@@ -264,12 +262,12 @@ public class TalliesActivity extends Activity {
 				if (offset == 0) reqMonTotal();
 				dismissDialog(DIALOG_TALLIES_PROGRESS_KEY);
 				if ((result != null) && (resCode == 0)){
-					Object[] temp = (Object[]) result;
-					for (int i = 0; i < temp.length; i++){
-						tallies.add(temp[i]);
+					Object[] rawTallies = (Object[]) result;
+					for (int i = 0; i < rawTallies.length; i++){
+						tallies.add(rawTallies[i]);
 					}
-					if (temp.length == 0) isFirstTally = true;
-					tvInfo.setText(String.valueOf(temp.length));
+					if (rawTallies.length < count) isFirstTally = true;
+					tvInfo.setText(String.valueOf(rawTallies.length));
 				} else {
 					String errMsg = "RpcError[get_last_tallies]: " + resInfo;
 					Log.e(TAG, errMsg);
@@ -354,14 +352,14 @@ public class TalliesActivity extends Activity {
 
     class TalliesAdapter extends ArrayAdapter<Object> {
 		private LayoutInflater inflater;
-        private Bitmap icon0;
-        private Bitmap icon1;
+        private Bitmap iconT0;
+        private Bitmap iconT1;
 		
 		public TalliesAdapter(Context context) {
 			super(context, 0);
 			inflater = LayoutInflater.from(context);
-            icon0 = BitmapFactory.decodeResource(context.getResources(), R.drawable.right);
-            icon1 = BitmapFactory.decodeResource(context.getResources(), R.drawable.left);
+            iconT0 = BitmapFactory.decodeResource(context.getResources(), R.drawable.t0);
+            iconT1 = BitmapFactory.decodeResource(context.getResources(), R.drawable.t1);
 		}
 		
 		@Override
@@ -402,7 +400,7 @@ public class TalliesActivity extends Activity {
         	holder.dateStr = item[5].toString();
         	holder.memo = Base64.decodeString(item[6].toString());
 
-        	holder.ivType.setImageBitmap(holder.typeId == 0 ? icon0 : icon1);
+        	holder.ivType.setImageBitmap(holder.typeId == 0 ? iconT0 : iconT1);
         	holder.tvSubType.setText(holder.typeId == 0 ? t0SubTypes[holder.subTypeId] : t1SubTypes[holder.subTypeId]);
         	holder.tvAmount.setText(String.valueOf(holder.amount));
         	holder.tvUser.setText(users[holder.userId]);
