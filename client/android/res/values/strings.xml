@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ezTally</string>
+    <string name="app_name">ezTallyDroid</string>
 
-    <string name="tally_activity_title">ezTally-收支项详情</string>
+    <string name="tally_activity_title">ezTallyDroid-收支项</string>
     <string name="tally_amount_tv">金额：</string>
     <string name="tally_amount_hint">整数金额(元), 必填</string>
 	<string name="tally_date_tv">日期：</string>
@@ -18,7 +18,7 @@
     <string name="tally_save_failed">很抱歉，保存收支项操作失败！</string>
     <string name="tally_delete_failed">很抱歉，删除收支项操作失败！</string>
 
-    <string name="login_activity_title">ezTally-登录</string>
+    <string name="login_activity_title">ezTallyDroid-登录</string>
     <string name="login_svcurl_tv">当前服务：</string>
     <string name="login_user_tv">用户：</string>
     <string name="login_password_tv">密码：</string>
@@ -29,7 +29,7 @@
     <string name="login_login_failed">登录失败，密码错误或连接服务失败！</string>
     <string name="login_user_prompt">选择用户</string>
 
-    <string name="tallies_activity_title">ezTally轻松家庭记账</string>
+    <string name="tallies_activity_title">ezTallyDroid轻松家庭记账</string>
     <string name="tallies_menu_login">登录</string>
     <string name="tallies_menu_setting">设置</string>
     <string name="tallies_menu_about">关于...</string>
@@ -39,11 +39,11 @@
     <string name="tallies_montotal_tv">本月合计 [收入%s元, 支出%s元]</string>
     <string name="tallies_add_btn">添加收支项</string>
     <string name="tallies_report_btn">查看收支报告</string>
-    <string name="tallies_about_title">关于ezTally</string>
-    <string name="tallies_about_message">简易的家庭网络记账软件，后台服务基于GAE(Google Application Engine)，有Android和PC两种客户端。当前版本: v0.5.1。</string>
+    <string name="tallies_about_title">关于ezTallyDroid</string>
+    <string name="tallies_about_message">ezTally是基于GAE的简易家庭网络记账软件，提供Android、J2ME和PC桌面三种客户端软件，轻松实现家庭中多个成员的同步记账。ezTallyDroid即ezTally的Android客户端，这是v0.5.2。欢迎使用！。</string>
 
-    <string name="report_activity_title">ezTally-收支报告</string>
-    <string name="report_chart_activity_title">ezTally-收支统计图</string>
+    <string name="report_activity_title">ezTallyDroid-收支报告</string>
+    <string name="report_chart_activity_title">ezTallyDroid-收支统计图</string>
     <string name="report_query_progress">正在获取报告数据...</string>
     <string name="report_query_failed">很抱歉，获取报告数据失败！</string>
     <string name="report_t0cat_tv">收入分类统计(类目,金额,百分比)</string>
@@ -64,8 +64,8 @@
     <string name="report_t0cat_chart_t0">收入</string>
     <string name="report_t1cat_chart_t1">支出</string>
 
-    <string name="setting_activity_title">ezTally-设置</string>
-    <string name="setting_service_url_title">远程服务地址</string>
+    <string name="setting_activity_title">ezTallyDroid-设置</string>
+    <string name="setting_service_url_title">服务地址</string>
     <string name="setting_service_url_summary">设置远程服务的URL地址，如http://eztally.appspot.com</string>
 
 	<string-array name="t0_subtypes_arr">

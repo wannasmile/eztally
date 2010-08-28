@@ -17,7 +17,7 @@ public class RpcMethod extends Thread {
 	private Callback callback;
 
 	public static String sessionKey;
-	public static String serviceUrl;
+	public static String serviceUrl = SettingActivity.DEFAULT_SVC_URL;
 
 	public RpcMethod(XMLRPCClient client, String method, Callback callback) {
 		this.client = client;
@@ -42,7 +42,11 @@ public class RpcMethod extends Thread {
 			final Object result = client.callEx(method, params);
 			handler.post(new Runnable() {
 				public void run() {
-					callback.callRes(result, 0, "RpcMethod done.");
+					try {
+						callback.callRes(result, 0, "RpcMethod done.");
+					} catch (final Exception e) {
+						//Do nothing!
+					}
 				}
 			});
 		} catch (final Exception e) {
